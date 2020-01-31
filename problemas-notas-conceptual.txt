@@ -1,0 +1,14 @@
+
+# Problemas identificados ejercicio conceptual
+
+1. La clase no compila porque la linea "FileOutputStream o = new FileOutputStream(file);" lanza una excepcion que no es manejada por el codigo
+2. Los metodos: getContent, getContentWithoutUnicode, saveContent no liberan los recursos, es decir no se ejecutan los metodos "close"
+3. Los metodos getContent y getContentWithoutUnicode podrian formas mas optimas de almacenar el contenido leido usando por ejemplo la clase StringBuilder
+4. Una forma mas eficiente de almacenar el contenido de la cadena "content" en el metod saveContent podria ser llamando al metodo write(byte[]) con el argumento content.getBytes()
+5. En caso de que el metodo write lance una excepcion en el metodo saveContent, este fallo es ocultado al codigo que ejecute el metodo saveContent porque se atrapa la excepcion y no se notifica de este fallo.
+6. Los metodos  getContent, getContentWithoutUnicode, saveContent solo leen o escriben texto correctamente si los caracteres origen o destino ocupan un byte
+7. La sincronizacion en el metodo getFile no es util
+8. La clase indica que es segura ante hilos, pero no esta claro de que se protege, solo esta evitando que el setFile y getFile se ejecuten concurrente lo cual no afecta el funcionamiento de los otros metodos.
+9. Puede ser mejor que el metodo getContentWithoutUnicode reemplazara los caracteres que unicode por algun otra caracter
+
+
